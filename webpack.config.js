@@ -7,7 +7,7 @@ const devMode = process.env.NODE_ENV !== "production"
 const plugins = [
   new HtmlWebpackPlugin({
     filename: "index.html",
-    template: "index_template.html"
+    template: "./index_template.html"
   }),
   new MiniCssExtractPlugin({
     filename: devMode ? "[name].css" : "[name].[contenthash].css",
@@ -26,7 +26,7 @@ module.exports = {
     index: path.resolve(__dirname, "src", "index.js")
   },
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
     clean: true
   },
@@ -57,6 +57,14 @@ module.exports = {
                 "@babel/preset-react"
               ]
             }
+          }
+        ]
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
           }
         ]
       },
