@@ -82,6 +82,10 @@ body {
         right: auto;
       }
 
+      .full-name-container {
+        z-index: 50;
+      }
+
       &:nth-child(2n) {
         .expandable-image-container {
           left: auto;
