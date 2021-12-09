@@ -1,0 +1,173 @@
+@font-face {
+  font-family: "Trump Gothic East Bold";
+  src: url("assets/fonts/TrumpGothicEastBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reckless Neue Light";
+  src: url("assets/fonts/RecklessNeueLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Grotesk TXPro";
+  src: url("assets/fonts/NHaasGroteskTXPro.woff2") format("woff2");
+}
+
+html,
+body {
+  min-width: 320px;
+}
+
+body {
+  margin: 0;
+  font-family: "Reckless Neue Light", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  padding-top: 150px;
+  background: black;
+  position: relative;
+
+  .team-members-container {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+
+    box-sizing: border-box;
+    padding: 100px 20px;
+
+    .details {
+      opacity: 0;
+    }
+
+    &.has-active {
+      .team-member {
+        .full-name-container {
+          opacity: 0.25;
+          transition: opacity 500ms;
+          transition-delay: 0ms;
+          z-index: 2;
+        }
+
+        &.is-active {
+          .full-name-container {
+            opacity: 1;
+            transition-delay: 0ms;
+            z-index: 100;
+          }
+        }
+
+        .details {
+          opacity: 1;
+          transition: opacity 500ms;
+        }
+      }
+    }
+  }
+
+  .team-member {
+    position: relative;
+    display: flex;
+    height: fit-content;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .team-member {
+      .expandable-image-container {
+        top: -250px;
+        left: 30%;
+        right: auto;
+      }
+
+      &:nth-child(2n) {
+        .expandable-image-container {
+          left: auto;
+          right: 30%;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      padding-top: 0;
+
+      .team-members-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 250px 40px 100px;
+
+        .team-member {
+          align-self: flex-start;
+          margin-bottom: 20px;
+
+          .expandable-image-container {
+            left: 20%;
+            right: auto;
+          }
+
+          &:nth-child(2n) {
+            align-self: flex-end;
+
+            .expandable-image-container {
+              left: auto;
+              right: 20%;
+            }
+          }
+
+          .full-name-container {
+            font-size: 10vw;
+          }
+
+          .details {
+            width: 60vw;
+
+            .title {
+              font-size: 3.5vw;
+            }
+
+            .desc {
+              font-size: 3vw;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    & {
+      .team-members-container {
+        padding: 100px 20px 50px;
+
+        .team-member {
+          .expandable-image-container {
+            width: 300px;
+            height: 300px;
+
+            top: -170px;
+            left: 15%;
+            right: auto;
+          }
+
+          &:nth-child(2n) {
+            .expandable-image-container {
+              left: auto;
+              right: 15%;
+            }
+          }
+
+          &:nth-child(1) {
+            .expandable-image-container {
+              top: -30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
